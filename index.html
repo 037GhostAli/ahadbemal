@@ -15,22 +15,11 @@
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background: linear-gradient(-45deg, #ff7eb3, #ff758c, #ff7eb3, #ff758c);
-            background-size: 400% 400%;
-            animation: gradient 5s ease infinite;
             color: #333;
-            text-align: center;
-            padding: 20px;
-            direction: rtl;
             margin: 0;
             transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* افکت گرادینت متحرک */
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            padding: 20px;
+            direction: rtl;
         }
 
         /* حالت تیره */
@@ -39,9 +28,40 @@
             color: #ffffff;
         }
 
+        /* هدر */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 999;
+        }
+
+        /* دکمه تغییر حالت با آیکون */
+        .mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1000;
+        }
+
+        .mode-toggle:hover {
+            color: #ff7eb3;
+        }
+
         .container {
             max-width: 600px;
             margin: auto;
+            padding-top: 60px; /* فاصله از هدر */
         }
 
         /* افکت زوم روی عکس */
@@ -54,19 +74,17 @@
             transform: scale(1.05);
         }
 
-        /* دکمه تغییر حالت با آیکون */
-        .mode-toggle {
-            background-color: transparent;
-            color: white;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: color 0.3s;
+        /* افکت تایپینگ متن */
+        @keyframes typewriter {
+            0% { width: 0; }
+            100% { width: 100%; }
         }
 
-        .mode-toggle:hover {
-            color: #ff7eb3;
+        h2 {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #333;
+            animation: typewriter 3s steps(40) 1s 1 normal both;
         }
     </style>
 </head>
@@ -74,12 +92,12 @@
 
 <header> احد موزیک</header>
 
-<div class="container">
-    <!-- دکمه تغییر حالت با آیکون خورشید و ماه -->
-    <button class="mode-toggle" onclick="toggleMode()" id="modeButton">
-        <i class="fas fa-sun"></i> <!-- آیکون خورشید برای حالت روشن -->
-    </button>
+<!-- دکمه تغییر حالت با آیکون خورشید و ماه -->
+<button class="mode-toggle" onclick="toggleMode()" id="modeButton">
+    <i class="fas fa-sun"></i> <!-- آیکون خورشید برای حالت روشن -->
+</button>
 
+<div class="container">
     <!-- عکس -->
     <img src="https://i.postimg.cc/fb6RyZyp/IMG-20250319-141537-103.png" alt="کاور موزیک">
 
