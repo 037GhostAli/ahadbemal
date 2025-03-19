@@ -96,34 +96,40 @@
         /* پلیر موزیک */
         .music-player {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             margin-top: 100px; /* فاصله از بالا */
         }
 
-        /* آیکون پلیر */
-        .music-player audio {
-            display: block;
-            width: 80%; /* اندازه پلیر موزیک */
-            margin: auto;
-        }
-
-        /* آیکون جدید پلیر (آیکون play) */
+        /* آیکون هدفون */
         .music-player i {
             font-size: 60px;
-            color: #ff7eb3; /* رنگ آیکون */
+            color: #ff7eb3;
             cursor: pointer;
             transition: transform 0.3s;
+            margin-bottom: 10px;
         }
 
         .music-player i:hover {
             transform: scale(1.1);
+            color: #ff758c;
         }
+
+        /* استایل پلیر */
+        .music-player audio {
+            width: 80%;
+            outline: none;
+            border-radius: 10px;
+        }
+
     </style>
 </head>
 <body>
 
-<header> احد موزیک
+<!-- هدر -->
+<header>
+    احد موزیک
     <!-- دکمه تغییر حالت با آیکون خورشید و ماه -->
     <button class="mode-toggle" onclick="toggleMode()" id="modeButton">
         <i class="fas fa-sun"></i> <!-- آیکون خورشید برای حالت روشن -->
@@ -134,10 +140,9 @@
     <!-- عکس -->
     <img src="https://i.postimg.cc/fb6RyZyp/IMG-20250319-141537-103.png" alt="کاور موزیک">
 
-    <!-- موزیک -->
+    <!-- پلیر موزیک با آیکون هدفون -->
     <div class="music-player">
-        <!-- آیکون پلیر (در اینجا آیکون play) -->
-        <i class="fas fa-play"></i>
+        <i class="fas fa-headphones"></i> <!-- آیکون هدفون -->
         <audio controls>
             <source src="https://uploadkon.ir/uploads/c8b419_25دیس-به-احدعلی-جون-1-.mp3" type="audio/mpeg">
             مرورگر شما از پخش این فرمت پشتیبانی نمی‌کند.
@@ -148,53 +153,54 @@
     <div class="lyrics">
         <h2>متن ترانه</h2>
         <p>
-            داش، احد نگو، بلا بگو  ؛
-            اُبی اُبی‌ها بگو  ؛
-            کی می‌دی شمع‌هام رو پس؟  ؛
-            دیگه نَقاپ اون‌ها رو، حیوون  ؛
+            داش، احد نگو، بلا بگو  ؛  
+            اُبی اُبی‌ها بگو  ؛  
+            کی می‌دی شمع‌هام رو پس؟  ؛  
+            دیگه نَقاپ اون‌ها رو، حیوون  ؛  
             <br><br>
-            کمتر بمال، حیوون  ؛
-            جوادم شده حیرون  ؛
-            خنده‌هات مثل یه خورشید  ؛
-            لای ارتودنسی‌های عین شومبول  ؛
+            کمتر بمال، حیوون  ؛  
+            جوادم شده حیرون  ؛  
+            خنده‌هات مثل یه خورشید  ؛  
+            لای ارتودنسی‌های عین شومبول  ؛  
             <br><br>
-            حرفای تلخت رو بنداز  ؛
-            بذار دلت بشه آواز  ؛
-            بمال برای استاد  ؛
-            بذار دنیا بشه دلباز  ؛
+            حرفای تلخت رو بنداز  ؛  
+            بذار دلت بشه آواز  ؛  
+            بمال برای استاد  ؛  
+            بذار دنیا بشه دلباز  ؛  
             <br><br>
-            کمتر بمال، حیوون  ؛
-            جوادم شده حیرون  ؛
-            رشک که برات شوخیه  ؛
-            ماساژ تایلندی شده ارزون  ؛
+            کمتر بمال، حیوون  ؛  
+            جوادم شده حیرون  ؛  
+            رشک که برات شوخیه  ؛  
+            ماساژ تایلندی شده ارزون  ؛  
             <br><br>
-            می‌ماله تا بره بالا  ؛
-            فکر می‌کنه شده آقا  ؛
-            اما هرچی پاچه می‌گیره  ؛
-            بازم تو صف ماست، آقا  ؛
+            می‌ماله تا بره بالا  ؛  
+            فکر می‌کنه شده آقا  ؛  
+            اما هرچی پاچه می‌گیره  ؛  
+            بازم تو صف ماست، آقا  ؛  
             <br><br>
-            کمتر بمال، حیوون  ؛
-            جوادم شده حیرون  ؛
-            تو با مالش می‌سازی  ؛
-            یه دنیای قشنگ و پرشور  ؛
+            کمتر بمال، حیوون  ؛  
+            جوادم شده حیرون  ؛  
+            تو با مالش می‌سازی  ؛  
+            یه دنیای قشنگ و پرشور  ؛  
             <br><br>
-            اینم دیس من به احد  ؛
-            بمال مثل همیشه  ؛
+            اینم دیس من به احد  ؛  
+            بمال مثل همیشه  ؛  
             شاید هم محکم و با قدرت‌تر  
         </p>
     </div>
 </div>
 
 <script>
+    // تغییر حالت تیره و روشن
     function toggleMode() {
         document.body.classList.toggle('dark-mode');
 
         // تغییر آیکون بر اساس حالت
         const modeButton = document.getElementById('modeButton');
         if (document.body.classList.contains('dark-mode')) {
-            modeButton.innerHTML = '<i class="fas fa-moon"></i>'; // ماه برای حالت تیره
+            modeButton.innerHTML = '<i class="fas fa-moon"></i>'; // آیکون ماه برای حالت تیره
         } else {
-            modeButton.innerHTML = '<i class="fas fa-sun"></i>'; // خورشید برای حالت روشن
+            modeButton.innerHTML = '<i class="fas fa-sun"></i>'; // آیکون خورشید برای حالت روشن
         }
     }
 </script>
