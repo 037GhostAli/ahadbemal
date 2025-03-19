@@ -39,13 +39,18 @@
             padding: 10px 0;
             text-align: center;
             z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
         /* دکمه تغییر حالت با آیکون */
         .mode-toggle {
-            position: fixed;
-            top: 20px;
+            position: absolute;
+            top: 50%;
             right: 20px;
+            transform: translateY(-50%);
             background-color: transparent;
             color: white;
             border: none;
@@ -91,12 +96,12 @@
 </head>
 <body>
 
-<header> احد موزیک</header>
-
-<!-- دکمه تغییر حالت با آیکون خورشید و ماه -->
-<button class="mode-toggle" onclick="toggleMode()" id="modeButton">
-    <i class="fas fa-sun"></i> <!-- آیکون خورشید برای حالت روشن -->
-</button>
+<header> احد موزیک
+    <!-- دکمه تغییر حالت با آیکون خورشید و ماه -->
+    <button class="mode-toggle" onclick="toggleMode()" id="modeButton">
+        <i class="fas fa-sun"></i> <!-- آیکون خورشید برای حالت روشن -->
+    </button>
+</header>
 
 <div class="container">
     <!-- عکس -->
