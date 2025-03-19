@@ -92,6 +92,21 @@
             border-right: 2px solid #333;
             animation: typewriter 3s steps(40) 1s 1 normal both;
         }
+
+        /* پلیر موزیک */
+        .music-player {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px; /* فاصله از بالا */
+        }
+
+        /* آیکون پلیر */
+        .music-player audio {
+            display: block;
+            width: 80%; /* اندازه پلیر موزیک */
+            margin: auto;
+        }
     </style>
 </head>
 <body>
@@ -108,10 +123,12 @@
     <img src="https://i.postimg.cc/fb6RyZyp/IMG-20250319-141537-103.png" alt="کاور موزیک">
 
     <!-- موزیک -->
-    <audio controls>
-        <source src="https://uploadkon.ir/uploads/c8b419_25دیس-به-احدعلی-جون-1-.mp3" type="audio/mpeg">
-        مرورگر شما از پخش این فرمت پشتیبانی نمی‌کند.
-    </audio>
+    <div class="music-player">
+        <audio controls>
+            <source src="https://uploadkon.ir/uploads/c8b419_25دیس-به-احدعلی-جون-1-.mp3" type="audio/mpeg">
+            مرورگر شما از پخش این فرمت پشتیبانی نمی‌کند.
+        </audio>
+    </div>
 
     <!-- متن ترانه -->
     <div class="lyrics">
