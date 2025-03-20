@@ -102,19 +102,23 @@
             margin-top: 60px;
         }
 
-        /* آیکون هدفون (سیاه) */
+        /* آیکون هدفون */
         .music-player i {
             font-size: 60px;
-            color: #000; /* رنگ سیاه */
+            color: #000; /* سیاه برای حالت روشن */
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s, color 0.3s;
             margin-bottom: 20px;
             margin-top: -20px;
         }
 
+        body.dark-mode .music-player i {
+            color: #fff; /* سفید برای حالت تیره */
+        }
+
         .music-player i:hover {
             transform: scale(1.1);
-            color: #555; /* رنگ خاکستری هنگام هاور */
+            color: #555; /* خاکستری هنگام هاور */
         }
 
         /* استایل پلیر */
@@ -142,7 +146,7 @@
 
     <!-- پلیر موزیک با آیکون هدفون -->
     <div class="music-player">
-        <i class="fas fa-headphones"></i> <!-- آیکون هدفون سیاه -->
+        <i class="fas fa-headphones"></i> <!-- آیکون هدفون -->
         <audio controls>
             <source src="https://uploadkon.ir/uploads/c8b419_25دیس-به-احدعلی-جون-1-.mp3" type="audio/mpeg">
             مرورگر شما از پخش این فرمت پشتیبانی نمی‌کند.
@@ -206,4 +210,4 @@
 </script>
 
 </body>
-</html>
+    </html>
