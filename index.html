@@ -45,16 +45,22 @@
 
 .theme-toggle {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 10px;
+    left: 10px;
     font-size: 22px;
     cursor: pointer;
-    margin: 10px; /* اضافه کردن فاصله از گوشه */
+    z-index: 1000;
+    transition: opacity 0.3s ease; /* انیمیشن برای پنهان و آشکار شدن */
 }
 
 .container {
     max-width: 90%;
     margin: 20px auto;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none; /* جلوگیری از کلیک شدن وقتی پنهان است */
 }
 
         /* عکس */
