@@ -70,15 +70,14 @@
         }
 
         .cover-box img {
-            filter: grayscale(100%); /* تصویر سیاه و سفید */
-            transition: filter 0.5s ease; /* انیمیشن فیلتر */
+            transition: transform 0.5s ease; /* انیمیشن زوم */
             width: 100%;
             height: auto;
             border-radius: 10px;
         }
 
         .cover-box:hover img {
-            filter: grayscale(0%); /* تصویر رنگی هنگام هاور */
+            transform: scale(1.1); /* افکت زوم در هاور */
         }
 
         /* پلیر موزیک */
@@ -265,4 +264,4 @@
 </script>
 
 </body>
-                </html>
+</html>
