@@ -12,23 +12,13 @@
     <!-- اضافه کردن Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <!-- کد تایید Bing -->
-    <meta name="msvalidate.01" content="60C098E96BE997A514D3DC1C44EB8452" />
-
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
             color: #333;
             margin: 0;
-            transition: background-color 0.3s, color 0.3s;
             padding: 20px;
             direction: rtl;
-        }
-
-        /* حالت تیره */
-        body.dark-mode {
-            background-color: #121212;
-            color: #ffffff;
         }
 
         /* هدر */
@@ -42,119 +32,50 @@
             padding: 10px 0;
             text-align: center;
             z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
         }
 
-        /* دکمه تغییر حالت با آیکون */
-        .mode-toggle {
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            background-color: transparent;
-            color: white;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            transition: color 0.3s;
-            z-index: 1000;
-        }
-
-        .mode-toggle:hover {
-            color: #ff7eb3;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding-top: 60px; /* فاصله از هدر */
-        }
-
-        /* افکت زوم روی عکس */
-        img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-        img:hover {
-            transform: scale(1.05);
-        }
-
-        /* افکت تایپینگ متن */
-        @keyframes typewriter {
-            0% { width: 0; }
-            100% { width: 100%; }
-        }
-
-        h2 {
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid #333;
-            animation: typewriter 3s steps(40) 1s 1 normal both;
-        }
-
-        /* پلیر موزیک */
-        .music-player {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 60px;
-        }
-
-        /* آیکون هدفون */
-        .music-player i {
-            font-size: 60px;
-            color: #000; /* سیاه برای حالت روشن */
-            cursor: pointer;
-            transition: transform 0.3s, color 0.3s;
-            margin-bottom: 20px;
-            margin-top: -20px;
-        }
-
-        body.dark-mode .music-player i {
-            color: #fff; /* سفید برای حالت تیره */
-        }
-
-        .music-player i:hover {
-            transform: scale(1.1);
-            color: #555; /* خاکستری هنگام هاور */
-        }
-
-        /* استایل پلیر */
-        .music-player audio {
-            width: 80%;
-            outline: none;
-            border-radius: 10px;
-        }
-
-        /* استایل باکس متن ترانه */
+        /* استایل برای باکس متن ترانه */
         .lyrics-box {
-            background: linear-gradient(135deg, #ff7eb3, #ff758c);
-            padding: 15px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #333333, #121212);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
             color: white;
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0; /* ابتدا باکس محو است */
+            transform: translateY(50px); /* ابتدا پایین‌تر از صفحه قرار دارد */
+            animation: slideIn 1s ease-out forwards; /* اضافه کردن انیمیشن اسلاید */
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lyrics h2 {
+            font-size: 28px;
             font-weight: bold;
-            text-align: center;
-            margin-top: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            margin-bottom: 15px;
         }
 
-        /* فاصله بین بیت‌های شعر */
-        .lyrics-box p {
-            margin-bottom: 20px;
-            line-height: 2;
-            font-size: 18px;
-            border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
-            padding-bottom: 10px;
+        .lyrics p {
+            white-space: pre-wrap;
         }
 
-        .lyrics-box p:last-child {
-            border-bottom: none;
+        /* جدا کننده بین خطوط ترانه */
+        .lyrics p br {
+            margin-bottom: 10px;
         }
+
     </style>
 </head>
 <body>
@@ -162,17 +83,13 @@
 <!-- هدر -->
 <header>
     احد موزیک
-    <!-- دکمه تغییر حالت با آیکون خورشید و ماه -->
-    <button class="mode-toggle" onclick="toggleMode()" id="modeButton">
-        <i class="fas fa-sun"></i> <!-- آیکون خورشید برای حالت روشن -->
-    </button>
 </header>
 
 <div class="container">
     <!-- عکس -->
     <img src="https://i.postimg.cc/fb6RyZyp/IMG-20250319-141537-103.png" alt="کاور موزیک">
 
-    <!-- پلیر موزیک با آیکون هدفون -->
+    <!-- پلیر موزیک -->
     <div class="music-player">
         <i class="fas fa-headphones"></i> <!-- آیکون هدفون -->
         <audio controls>
@@ -186,41 +103,43 @@
         <h2>متن ترانه</h2>
         <div class="lyrics-box">
             <p>
-                داش، احد نگو، بلا بگو؛ <br>
-                اُبی اُبی‌ها بگو؛ <br>
-                کی می‌دی شمع‌هام رو پس؟؛ <br>
-                دیگه نَقاپ اون‌ها رو، حیوون؛  
-            </p>
-            <p>
-                کمتر بمال، حیوون؛ <br>
-                جوادم شده حیرون؛ <br>
-                خنده‌هات مثل یه خورشید؛ <br>
-                لای ارتودنسی‌های عین شومبول؛  
-            </p>
-            <p>
-                حرفای تلخت رو بنداز؛ <br>
-                بذار دلت بشه آواز؛ <br>
-                بمال برای استاد؛ <br>
-                بذار دنیا بشه دلباز؛  
+                داش، احد نگو، بلا بگو  ؛  
+                اُبی اُبی‌ها بگو  ؛  
+                کی می‌دی شمع‌هام رو پس؟  ؛  
+                دیگه نَقاپ اون‌ها رو، حیوون  ؛  
+                <br><br>
+                کمتر بمال، حیوون  ؛  
+                جوادم شده حیرون  ؛  
+                خنده‌هات مثل یه خورشید  ؛  
+                لای ارتودنسی‌های عین شومبول  ؛  
+                <br><br>
+                حرفای تلخت رو بنداز  ؛  
+                بذار دلت بشه آواز  ؛  
+                بمال برای استاد  ؛  
+                بذار دنیا بشه دلباز  ؛  
+                <br><br>
+                کمتر بمال، حیوون  ؛  
+                جوادم شده حیرون  ؛  
+                رشک که برات شوخیه  ؛  
+                ماساژ تایلندی شده ارزون  ؛  
+                <br><br>
+                می‌ماله تا بره بالا  ؛  
+                فکر می‌کنه شده آقا  ؛  
+                اما هرچی پاچه می‌گیره  ؛  
+                بازم تو صف ماست، آقا  ؛  
+                <br><br>
+                کمتر بمال، حیوون  ؛  
+                جوادم شده حیرون  ؛  
+                تو با مالش می‌سازی  ؛  
+                یه دنیای قشنگ و پرشور  ؛  
+                <br><br>
+                اینم دیس من به احد  ؛  
+                بمال مثل همیشه  ؛  
+                شاید هم محکم و با قدرت‌تر
             </p>
         </div>
     </div>
 </div>
-
-<script>
-    // تغییر حالت تیره و روشن
-    function toggleMode() {
-        document.body.classList.toggle('dark-mode');
-
-        // تغییر آیکون بر اساس حالت
-        const modeButton = document.getElementById('modeButton');
-        if (document.body.classList.contains('dark-mode')) {
-            modeButton.innerHTML = '<i class="fas fa-moon"></i>'; // آیکون ماه برای حالت تیره
-        } else {
-            modeButton.innerHTML = '<i class="fas fa-sun"></i>'; // آیکون خورشید برای حالت روشن
-        }
-    }
-</script>
 
 </body>
 </html>
