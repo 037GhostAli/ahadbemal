@@ -21,6 +21,7 @@
             font-family: 'Vazirmatn', sans-serif;
             direction: rtl;
             transition: background 0.3s, color 0.3s;
+            text-align: center;
         }
 
         /* حالت روشن */
@@ -37,25 +38,9 @@
 
         /* هدر */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px 0;
-            text-align: center;
+            padding: 15px 0;
             font-size: 24px;
             font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .light-mode header {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #000;
-        }
-
-        .dark-mode header {
-            background-color: rgba(0, 0, 0, 0.9);
-            color: #fff;
         }
 
         /* دکمه تغییر حالت */
@@ -66,31 +51,79 @@
             font-size: 22px;
             cursor: pointer;
             z-index: 1000;
-            transition: color 0.3s;
         }
 
-        .light-mode .theme-toggle {
-            color: #333;
+        .container {
+            max-width: 90%;
+            margin: 20px auto;
         }
 
-        .dark-mode .theme-toggle {
-            color: #fff;
-        }
-
-        /* تصویر */
-        .container img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 60px;
+        /* عکس */
+        .cover-box {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 500px;
+            overflow: hidden;
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cover-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* پلیر موزیک */
+        .music-player {
+            margin-top: 20px;
+        }
+
+        .music-player i {
+            font-size: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .music-player i:hover {
+            transform: scale(1.1);
+        }
+
+        audio {
+            width: 80%;
+            margin-top: 10px;
+        }
+
+        /* افکت تایپ شدن متن ترانه */
+        .lyrics h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            height: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid;
+            display: inline-block;
+            animation: typing 2s steps(20) forwards, blink 0.5s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 120px }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent }
         }
 
         /* باکس متن ترانه */
         .lyrics-box {
+            max-width: 600px;
+            margin: 20px auto;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-top: 30px;
             font-size: 16px;
             line-height: 1.6;
             opacity: 0;
@@ -118,46 +151,6 @@
                 transform: translateY(0);
             }
         }
-
-        .lyrics h2 {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        /* پلیر موزیک */
-        .music-player {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-        }
-
-        .music-player i {
-            font-size: 60px;
-            cursor: pointer;
-            transition: transform 0.3s, color 0.3s;
-            margin-bottom: 20px;
-        }
-
-        .light-mode .music-player i {
-            color: #000;
-        }
-
-        .dark-mode .music-player i {
-            color: #fff;
-        }
-
-        .music-player i:hover {
-            transform: scale(1.1);
-        }
-
-        .music-player audio {
-            width: 80%;
-            outline: none;
-            border-radius: 10px;
-        }
     </style>
 </head>
 <body class="light-mode">
@@ -171,8 +164,10 @@
 </header>
 
 <div class="container">
-    <!-- عکس -->
-    <img src="https://i.postimg.cc/fb6RyZyp/IMG-20250319-141537-103.png" alt="کاور موزیک">
+    <!-- عکس کاور -->
+    <div class="cover-box">
+        <img src="https://i.postimg.cc/fb6RyZyp/IMG-20250319-141537-103.png" alt="کاور موزیک">
+    </div>
 
     <!-- پلیر موزیک -->
     <div class="music-player">
@@ -240,15 +235,13 @@
         }
     }
 
-    // تنظیم حالت بر اساس ذخیره‌سازی محلی
     window.onload = function () {
         let savedTheme = localStorage.getItem("theme");
         if (savedTheme) {
-            document.body.classList.remove("light-mode", "dark-mode");
             document.body.classList.add(savedTheme);
         }
     }
 </script>
 
 </body>
-</html>
+                    </html>
