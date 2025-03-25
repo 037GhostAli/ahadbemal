@@ -43,25 +43,20 @@
             font-weight: bold;
         }
 
-.theme-toggle {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 22px;
-    cursor: pointer;
-    z-index: 1000;
-    transition: opacity 0.3s ease;
-}
+        .theme-toggle {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
 
-.container {
-    max-width: 90%;
-    margin: 20px auto;
-}
-
-.hidden {
-    opacity: 0;
-    pointer-events: none; /* جلوگیری از کلیک شدن وقتی پنهان است */
-}
+        .container {
+            max-width: 90%;
+            margin: 20px auto;
+        }
 
         /* عکس */
         .cover-box {
@@ -75,9 +70,15 @@
         }
 
         .cover-box img {
+            filter: grayscale(100%); /* تصویر سیاه و سفید */
+            transition: filter 0.5s ease; /* انیمیشن فیلتر */
             width: 100%;
             height: auto;
             border-radius: 10px;
+        }
+
+        .cover-box:hover img {
+            filter: grayscale(0%); /* تصویر رنگی هنگام هاور */
         }
 
         /* پلیر موزیک */
@@ -89,7 +90,6 @@
             flex-direction: column;
         }
 
-        /* آیکون هدفون */
         .music-player i {
             font-size: 50px;
             cursor: pointer;
@@ -112,7 +112,7 @@
 
         /* افکت تایپ شدن متن ترانه */
         .lyrics {
-            margin-top: 50px; /* فاصله بیشتر از پلیر موزیک */
+            margin-top: 50px;
         }
 
         .lyrics h2 {
@@ -265,4 +265,4 @@
 </script>
 
 </body>
-    </html>
+                </html>
