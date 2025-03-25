@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>احد موزیک</title>
-    
-    <!-- اضافه کردن فونت فارسی -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- اضافه کردن Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     <style>
@@ -21,11 +19,20 @@
 
         body {
             font-family: 'Vazirmatn', sans-serif;
-            color: #333;
-            margin: 0;
-            padding: 0;
             direction: rtl;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* حالت روشن */
+        body.light-mode {
             background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* حالت تیره */
+        body.dark-mode {
+            background-color: #121212;
+            color: #fff;
         }
 
         /* هدر */
@@ -34,39 +41,73 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
             padding: 10px 0;
             text-align: center;
-            z-index: 999;
             font-size: 24px;
             font-weight: bold;
+            transition: background 0.3s;
         }
 
-        /* عکس کاور */
+        .light-mode header {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #000;
+        }
+
+        .dark-mode header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+        }
+
+        /* دکمه تغییر حالت */
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            left: 15px;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: color 0.3s;
+        }
+
+        .light-mode .theme-toggle {
+            color: #333;
+        }
+
+        .dark-mode .theme-toggle {
+            color: #fff;
+        }
+
+        /* تصویر */
         .container img {
             max-width: 100%;
             height: auto;
-            margin-top: 60px; /* فاصله از هدر */
+            margin-top: 60px;
             border-radius: 10px;
         }
 
-        /* تنظیمات برای باکس متن ترانه */
+        /* باکس متن ترانه */
         .lyrics-box {
-            background: linear-gradient(135deg, #333333, #121212);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             margin-top: 30px;
-            color: white;
             font-size: 16px;
             line-height: 1.6;
-            opacity: 0; /* ابتدا باکس محو است */
-            transform: translateY(50px); /* ابتدا پایین‌تر از صفحه قرار دارد */
-            animation: slideIn 1s ease-out forwards; /* اضافه کردن انیمیشن اسلاید */
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideIn 1s ease-out forwards;
         }
 
-        /* انیمیشن اسلاید */
+        .light-mode .lyrics-box {
+            background: linear-gradient(135deg, #ddd, #bbb);
+            color: #000;
+        }
+
+        .dark-mode .lyrics-box {
+            background: linear-gradient(135deg, #333, #121212);
+            color: #fff;
+        }
+
         @keyframes slideIn {
             0% {
                 opacity: 0;
@@ -81,20 +122,10 @@
         .lyrics h2 {
             font-size: 28px;
             font-weight: bold;
-            color: #fff;
             margin-bottom: 15px;
         }
 
-        .lyrics p {
-            white-space: pre-wrap;
-        }
-
-        /* جدا کننده بین خطوط ترانه */
-        .lyrics p br {
-            margin-bottom: 10px;
-        }
-
-        /* استایل پلیر موزیک */
+        /* پلیر موزیک */
         .music-player {
             display: flex;
             flex-direction: column;
@@ -103,21 +134,25 @@
             margin-top: 30px;
         }
 
-        /* آیکون هدفون */
         .music-player i {
             font-size: 60px;
-            color: #000;
             cursor: pointer;
             transition: transform 0.3s, color 0.3s;
             margin-bottom: 20px;
         }
 
-        .music-player i:hover {
-            transform: scale(1.1);
-            color: #555;
+        .light-mode .music-player i {
+            color: #000;
         }
 
-        /* پلیر موزیک */
+        .dark-mode .music-player i {
+            color: #fff;
+        }
+
+        .music-player i:hover {
+            transform: scale(1.1);
+        }
+
         .music-player audio {
             width: 80%;
             outline: none;
@@ -125,7 +160,10 @@
         }
     </style>
 </head>
-<body>
+<body class="light-mode">
+
+<!-- دکمه تغییر حالت -->
+<i class="fas fa-adjust theme-toggle" onclick="toggleTheme()"></i>
 
 <!-- هدر -->
 <header>
@@ -138,7 +176,7 @@
 
     <!-- پلیر موزیک -->
     <div class="music-player">
-        <i class="fas fa-headphones"></i> <!-- آیکون هدفون -->
+        <i class="fas fa-headphones"></i>
         <audio controls>
             <source src="https://uploadkon.ir/uploads/c8b419_25دیس-به-احدعلی-جون-1-.mp3" type="audio/mpeg">
             مرورگر شما از پخش این فرمت پشتیبانی نمی‌کند.
@@ -187,6 +225,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    function toggleTheme() {
+        let body = document.body;
+        if (body.classList.contains("light-mode")) {
+            body.classList.remove("light-mode");
+            body.classList.add("dark-mode");
+            localStorage.setItem("theme", "dark");
+        } else {
+            body.classList.remove("dark-mode");
+            body.classList.add("light-mode");
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+    // تنظیم حالت بر اساس ذخیره‌سازی محلی
+    window.onload = function () {
+        let savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+            document.body.classList.remove("light-mode", "dark-mode");
+            document.body.classList.add(savedTheme);
+        }
+    }
+</script>
 
 </body>
 </html>
