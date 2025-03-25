@@ -130,6 +130,31 @@
             outline: none;
             border-radius: 10px;
         }
+
+        /* استایل باکس متن ترانه */
+        .lyrics-box {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            padding: 15px;
+            border-radius: 15px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* فاصله بین بیت‌های شعر */
+        .lyrics-box p {
+            margin-bottom: 20px;
+            line-height: 2;
+            font-size: 18px;
+            border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
+            padding-bottom: 10px;
+        }
+
+        .lyrics-box p:last-child {
+            border-bottom: none;
+        }
     </style>
 </head>
 <body>
@@ -151,8 +176,7 @@
     <div class="music-player">
         <i class="fas fa-headphones"></i> <!-- آیکون هدفون -->
         <audio controls>
-            <source src="https://uploadkon.ir/uploads/c8b419_25دیس-به-احدعلی-جون-1-.mp3
-" type="audio/mpeg">
+            <source src="https://uploadkon.ir/uploads/c8b419_25دیس-به-احدعلی-جون-1-.mp3" type="audio/mpeg">
             مرورگر شما از پخش این فرمت پشتیبانی نمی‌کند.
         </audio>
     </div>
@@ -160,41 +184,26 @@
     <!-- متن ترانه -->
     <div class="lyrics">
         <h2>متن ترانه</h2>
-        <p>
-            داش، احد نگو، بلا بگو  ؛  
-            اُبی اُبی‌ها بگو  ؛  
-            کی می‌دی شمع‌هام رو پس؟  ؛  
-            دیگه نَقاپ اون‌ها رو، حیوون  ؛  
-            <br><br>
-            کمتر بمال، حیوون  ؛  
-            جوادم شده حیرون  ؛  
-            خنده‌هات مثل یه خورشید  ؛  
-            لای ارتودنسی‌های عین شومبول  ؛  
-            <br><br>
-            حرفای تلخت رو بنداز  ؛  
-            بذار دلت بشه آواز  ؛  
-            بمال برای استاد  ؛  
-            بذار دنیا بشه دلباز  ؛  
-            <br><br>
-            کمتر بمال، حیوون  ؛  
-            جوادم شده حیرون  ؛  
-            رشک که برات شوخیه  ؛  
-            ماساژ تایلندی شده ارزون  ؛  
-            <br><br>
-            می‌ماله تا بره بالا  ؛  
-            فکر می‌کنه شده آقا  ؛  
-            اما هرچی پاچه می‌گیره  ؛  
-            بازم تو صف ماست، آقا  ؛  
-            <br><br>
-            کمتر بمال، حیوون  ؛  
-            جوادم شده حیرون  ؛  
-            تو با مالش می‌سازی  ؛  
-            یه دنیای قشنگ و پرشور  ؛  
-            <br><br>
-            اینم دیس من به احد  ؛  
-            بمال مثل همیشه  ؛  
-            شاید هم محکم و با قدرت‌تر  
-        </p>
+        <div class="lyrics-box">
+            <p>
+                داش، احد نگو، بلا بگو؛ <br>
+                اُبی اُبی‌ها بگو؛ <br>
+                کی می‌دی شمع‌هام رو پس؟؛ <br>
+                دیگه نَقاپ اون‌ها رو، حیوون؛  
+            </p>
+            <p>
+                کمتر بمال، حیوون؛ <br>
+                جوادم شده حیرون؛ <br>
+                خنده‌هات مثل یه خورشید؛ <br>
+                لای ارتودنسی‌های عین شومبول؛  
+            </p>
+            <p>
+                حرفای تلخت رو بنداز؛ <br>
+                بذار دلت بشه آواز؛ <br>
+                بمال برای استاد؛ <br>
+                بذار دنیا بشه دلباز؛  
+            </p>
+        </div>
     </div>
 </div>
 
@@ -214,4 +223,4 @@
 </script>
 
 </body>
-                         </html>
+</html>
