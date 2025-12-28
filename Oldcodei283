@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>احد موزیک</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+            transition: background 0.3s, color 0.3s;
+            text-align: center;
+        }
+
+        /* حالت روشن */
+        body.light-mode {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* حالت تیره */
+        body.dark-mode {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        /* هدر */
+        header {
+            padding: 15px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+
+        .container {
+            max-width: 90%;
+            margin: 20px auto;
+        }
+
+        /* عکس */
+        .cover-box {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 500px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cover-box img {
+            transition: transform 0.3s ease; /* انیمیشن زوم */
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .cover-box:hover img {
+            transform: scale(1.1); /* افکت زوم روی عکس */
+        }
+
+        /* پلیر موزیک */
+        .music-player {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .music-player i {
+            font-size: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .music-player i:hover {
+            transform: scale(1.1);
+        }
+
+        audio {
+            width: 80%;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* افکت تایپ شدن متن ترانه */
+        .lyrics {
+            margin-top: 50px;
+        }
+
+        .lyrics h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            height: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid;
+            display: inline-block;
+            animation: typing 2s steps(20) forwards, blink 0.5s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 120px }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+
+        /* باکس متن ترانه */
+        .lyrics-box {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        .light-mode .lyrics-box {
+            background: linear-gradient(135deg, #ddd, #bbb);
+            color: #000;
+        }
+
+        .dark-mode .lyrics-box {
+            background: linear-gradient(135deg, #333, #121212);
+            color: #fff;
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* فاصله بیشتر بین هر بیت */
+        .lyrics-box p {
+            margin-bottom: 15px;
+        }
+
+        .lyrics-box p:nth-child(4n) {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body class="light-mode">
+
+<!-- دکمه تغییر حالت -->
+<i class="fas fa-adjust theme-toggle" onclick="toggleTheme()"></i>
+
+<!-- هدر -->
+<header>
+    احد موزیک
+</header>
+
+<div class="container">
+    <!-- عکس کاور -->
+    <div class="cover-box">
+        <img src="https://i.postimg.cc/fb6RyZyp/IMG-20250319-141537-103.png" alt="کاور موزیک">
+    </div>
+
+    <!-- پلیر موزیک -->
+    <div class="music-player">
+        <!-- آیکون هدفون بالای پلیر -->
+        <i class="fas fa-headphones"></i>
+        <audio controls>
+            <source src="https://uploadkon.ir/uploads/c8b419_25دیس-به-احدعلی-جون-1-.mp3" type="audio/mpeg">
+            مرورگر شما از پخش این فرمت پشتیبانی نمی‌کند.
+        </audio>
+    </div>
+
+    <!-- متن ترانه -->
+    <div class="lyrics">
+        <h2>متن ترانه</h2>
+        <div class="lyrics-box">
+            <p>داش، احد نگو، بلا بگو  ؛</p>  
+            <p>اُبی اُبی‌ها بگو  ؛</p>  
+            <p>کی می‌دی شمع‌هام رو پس؟  ؛</p>  
+            <p>دیگه نَقاپ اون‌ها رو، حیوون  ؛</p>  
+            <p>کمتر بمال، حیوون  ؛</p>  
+            <p>جوادم شده حیرون  ؛</p>  
+            <p>خنده‌هات مثل یه خورشید  ؛</p>  
+            <p>لای ارتودنسی‌های عین شومبول  ؛</p>  
+            <p>حرفای تلخت رو بنداز  ؛</p>  
+            <p>بذار دلت بشه آواز  ؛</p>  
+            <p>بمال برای استاد  ؛</p>  
+            <p>بذار دنیا بشه دلباز  ؛</p>  
+            <p>کمتر بمال، حیوون  ؛</p>  
+            <p>جوادم شده حیرون  ؛</p>  
+            <p>رشک که برات شوخیه  ؛</p>  
+            <p>ماساژ تایلندی شده ارزون  ؛</p>  
+            <p>می‌ماله تا بره بالا  ؛</p>  
+            <p>فکر می‌کنه شده آقا  ؛</p>  
+            <p>اما هرچی پاچه می‌گیره  ؛</p>  
+            <p>بازم تو صف ماست، آقا  ؛</p>  
+            <p>کمتر بمال، حیوون  ؛</p>  
+            <p>جوادم شده حیرون  ؛</p>  
+            <p>تو با مالش می‌سازی  ؛</p>  
+            <p>یه دنیای قشنگ و پرشور  ؛</p>  
+            <p>اینم دیس من به احد  ؛</p>  
+            <p>بمال مثل همیشه  ؛</p>  
+            <p>شاید هم محکم و با قدرت‌تر</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleTheme() {
+        let body = document.body;
+        if (body.classList.contains("light-mode")) {
+            body.classList.remove("light-mode");
+            body.classList.add("dark-mode");
+            localStorage.setItem("theme", "dark");
+        } else {
+            body.classList.remove("dark-mode");
+            body.classList.add("light-mode");
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+    window.onload = function () {
+        let savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+        }
+    }
+</script>
+
+</body>
+</html>
